@@ -23,3 +23,6 @@ something like `15451-tinglis-hw1.tex`, and you can get straight to editing.
 If you have to turn in different problems separately, you can enter an integer
 number of problems on the assignment, and then it will produce a file for each
 of those, like `15451-tinglis-hw1.1.tex`, `15451-tinglis-hw1.2.tex`, etc.
+
+This also assumes you use RVM to manage your ruby installation(s). If you
+don't, just change the shebang to whatever version of ruby you run.
