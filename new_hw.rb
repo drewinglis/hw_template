@@ -12,17 +12,17 @@ class TexHW
   end
 end
 
-USERNAME = ENV['ANDREWID'] || ENV['USER']
+USERNAME = (ENV['ANDREWID'] || ENV['USER']).downcase.gsub(/[^\w]/, "")
 NAME = ENV['LEGAL_NAME'] || ENV['NAME'] || USERNAME
 
 puts "using username as name :(" if USERNAME == NAME
 
-begin
-  HW_NUM = ARGV[0].to_i
-rescue
-  puts "usage: ./new_hw.rb hw_num [problem_count]"
+HW_NUM = ARGV[0]
+if !HW_NUM
+  puts "usage: ./new_hw.rb hw_num [problem_count]" 
   exit
 end
+
 begin
   PROBLEM_COUNT = ARGV[1].to_i
 rescue # default to 1 if num problems is invalid
@@ -50,7 +50,9 @@ pwd = `pwd`.chomp
 problem_number = 1
 
 while (problem_number <= PROBLEM_COUNT)
-  outfile ="#{pwd}/#{DEPARTMENT_NUM}#{COURSE_NUM}-#{USERNAME}-hw#{HW_NUM}#{(PROBLEM_COUNT > 1) ? ".#{problem_number}" : ""}.tex" 
+  course = "#{DEPARTMENT_NUM}#{COURSE_NUM}"
+  hw_name = "hw#{HW_NUM.downcase.gsub(/[^\w]/, "")}#{(PROBLEM_COUNT > 1) ? ".#{problem_number}" : ""}"
+  outfile = "#{pwd}/#{course}-#{USERNAME}-#{hw_name}.tex" 
   File.open(outfile, "w") do |f|
     f.write erb.render(problem_number)
   end
