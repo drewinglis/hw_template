@@ -1,0 +1,54 @@
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+% for DFAs
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage[latin1]{inputenc}
+
+\oddsidemargin0cm
+\topmargin-2cm
+\textwidth16.5cm
+\textheight23.5cm
+
+\newcommand{\question}[2] {\vspace{.25in} \hrule\vspace{0.5em}
+\noindent{\bf #1: #2} \vspace{0.5em}
+\hrule \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+
+\newcommand{\myname}{<%= @name %>}
+\newcommand{\myemail}{<%= @username %>@andrew.cmu.edu}
+\newcommand{\myhwnum}{<%= @hw_num %>}
+\newcommand{\classnum}{<%= @dep_num %>-<%= @course_num %>}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+
+\pagestyle{fancyplain}
+\lhead{\fancyplain{}{\textbf{HW \myhwnum}}}
+\rhead{\fancyplain{}{\myname\\ \myemail}}
+
+\begin{document}
+
+\medskip
+
+\thispagestyle{plain}
+\begin{center}                  % Center the following lines
+{\Large\classnum \space Assignment \myhwnum} \\
+\myname \\
+\myemail\\
+\today \\
+\end{center}
+
+\begin{enumerate}
+  \setcounter{enumi}{<%= first_problem_number %>}
+  \item %<%= first_problem_number %>
+
+\end{enumerate}
+
+\end{document}
