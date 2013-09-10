@@ -29,11 +29,13 @@ rescue # default to 1 if num problems is invalid
   PROBLEM_COUNT = 1
 end
 
-match = `pwd`.match(/\/(\d{2})\/(\d{3})/)
+classname_regex = /\/(\d{2}).{0,1}(\d{3}[A-Za-z]{0,1})/
+
+match = `pwd`.match(classname_regex)
 
 while !match
   puts "couldn't parse classes from directory. please enter course number (xx-xxx):"
-  match = $stdin.gets.chomp.match(/(\d{2}).{0,1}(\d{3})/)
+  match = $stdin.gets.chomp.match(classname_regex)
 end
 
 DEPARTMENT_NUM = match[1]
