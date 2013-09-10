@@ -31,7 +31,8 @@ end
 
 classname_regex = /\/(\d{2}).{0,1}(\d{3}[A-Za-z]{0,1})/
 
-match = `pwd`.match(classname_regex)
+pwd = `pwd`.strip
+match = pwd.match(classname_regex)
 
 while !match
   puts "couldn't parse classes from directory. please enter course number (xx-xxx):"
@@ -48,7 +49,6 @@ erb.filename = filename
 ERBTexHW = erb.def_class(TexHW, 'render(first_problem_number)')
 erb = ERBTexHW.new(NAME, USERNAME, DEPARTMENT_NUM, COURSE_NUM, HW_NUM)
 
-pwd = `pwd`.chomp
 problem_number = 1
 
 while (problem_number <= PROBLEM_COUNT)
